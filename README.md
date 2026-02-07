@@ -45,6 +45,11 @@
       <td>Plex Server URL</td>
     </tr>
     <tr>
+      <td>PLEX_USERS</td>
+      <td>&lt;PLEX_USER&gt;</td>
+      <td>Jellyfin Benutzername</td>
+    </tr>
+    <tr>
       <td>PLEX_TOKEN</td>
       <td>&lt;PLEX_TOKEN&gt;</td>
       <td>Plex Token</td>
@@ -55,7 +60,7 @@
       <td>Jellyfin Server URL</td>
     </tr>
     <tr>
-      <td>JELLYFIN_USER</td>
+      <td>JELLYFIN_USERS</td>
       <td>&lt;JELLYFIN_USER&gt;</td>
       <td>Jellyfin Benutzername</td>
     </tr>
@@ -63,6 +68,16 @@
       <td>JELLYFIN_PASSWORD</td>
       <td>&lt;JELLYFIN_PASSWORD&gt;</td>
       <td>Passwort / API-Token</td>
+    </tr>
+    <tr>
+      <td>SYNC_FROM_PLEX_TO_JELLYFIN</td>
+      <td>True/False</td>
+      <td>Plex Sync zu Jellyfin</td>
+    </tr>
+    <tr>
+      <td>SYNC_FROM_JELLYFIN_TO_PLEX</td>
+      <td>True/False</td>
+      <td>Jellyfin Sync zu Plex</td>
     </tr>
   </tbody>
 </table>
