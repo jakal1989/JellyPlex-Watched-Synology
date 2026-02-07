@@ -41,7 +41,7 @@
   <tbody>
     <tr>
       <td>PLEX_BASEURL</td>
-      <td>http://&lt;PLEX_SERVER_IP&gt;:32400/</td>
+      <td>http://&lt;PLEX_SERVER_IP&gt;:32400</td>
       <td>Plex Server URL</td>
     </tr>
     <tr>
@@ -56,7 +56,7 @@
     </tr>
     <tr>
       <td>JELLYFIN_BASEURL</td>
-      <td>http://&lt;JELLYFIN_SERVER_IP&gt;:8096/</td>
+      <td>http://&lt;JELLYFIN_SERVER_IP&gt;:8096</td>
       <td>Jellyfin Server URL</td>
     </tr>
     <tr>
