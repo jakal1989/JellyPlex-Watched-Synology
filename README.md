@@ -1,130 +1,129 @@
 <html>
 <body>
 <hr>
-<h1>JellyPlex-Watched auf Synology</h1>
-<p><strong>JellyPlex-Watched</strong> synchronisiert automatisch den „Watched“-Status von Medien zwischen <strong>Plex</strong> und <strong>Jellyfin</strong>, optimiert für den Einsatz auf einem <strong>Synology NAS</strong>.</p>
+<h1>JellyPlex-Watched on Synology</h1>
+<p><strong>JellyPlex-Watched</strong> automatically synchronizes the “Watched” status of media between <strong>Plex</strong> and <strong>Jellyfin</strong>, optimized for use on a <strong>Synology NAS</strong>.</p>
 <hr>
 <h2>Features</h2>
 <ul>
-  <li>Automatische Synchronisation von „Watched“-Status zwischen Plex und Jellyfin</li>
-  <li>Unterstützt mehrere Benutzer</li>
-  <li>Läuft stabil als Docker-Container auf Synology DSM</li>
-  <li>Einfache Konfiguration über Umgebungsvariablen</li>
+  <li>Automatic synchronization of “Watched” status between Plex and Jellyfin</li>
+  <li>Supports multiple users</li>
+  <li>Runs reliably as a Docker container on Synology DSM</li>
+  <li>Easy configuration via environment variables</li>
 </ul>
 <hr>
-<h2>Voraussetzungen</h2>
+<h2>Requirements</h2>
 <ul>
-  <li>Synology NAS mit <strong>Docker-Paket</strong></li>
-  <li>Plex Server mit <strong>Token</strong></li>
-  <li>Jellyfin Server mit Benutzerzugang</li>
+  <li>Synology NAS with <strong>Docker package</strong></li>
+  <li>Plex Server with <strong>token</strong></li>
+  <li>Jellyfin Server with user access</li>
 </ul>
 <hr>
-<h2>Installation auf Synology</h2>
-<h3>1. Docker Container erstellen</h3>
+<h2>Installation on Synology</h2>
+<h3>1. Create Docker Container</h3>
 <ol>
-  <li>Öffne Docker auf deinem Synology NAS</li>
-  <li>Gehe zu <strong>Registry</strong> und suche nach:<br><pre><code>luigi311/jellyplex-watched</code></pre></li>
-  <li>Lade das neueste Image herunter</li>
-  <li>Gehe zu <strong>Image → Starten</strong>, um einen neuen Container zu erstellen</li>
+  <li>Open Docker on your Synology NAS</li>
+  <li>Go to <strong>Registry</strong> and search for:<br><pre><code>luigi311/jellyplex-watched</code></pre></li>
+  <li>Download the latest image</li>
+  <li>Go to <strong>Image → Run</strong> to create a new container</li>
 </ol>
 
-<h3>2. Container konfigurieren</h3>
-<p><strong>Erweitert → Umgebungsvariablen:</strong></p>
+<h3>2. Configure Container</h3>
+<p><strong>Advanced Settings → Environment Variables:</strong></p>
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
     <tr>
       <th>Variable</th>
-      <th>Wert</th>
-      <th>Beschreibung</th>
+      <th>Value</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>PLEX_BASEURL</td>
       <td>http://&lt;PLEX_SERVER_IP&gt;:32400</td>
-      <td>Plex Server URL</td>
+      <td>Plex server URL</td>
     </tr>
     <tr>
       <td>PLEX_USERS</td>
       <td>&lt;PLEX_USER&gt;</td>
-      <td>Jellyfin Benutzername</td>
+      <td>Plex username</td>
     </tr>
     <tr>
       <td>PLEX_TOKEN</td>
       <td>&lt;PLEX_TOKEN&gt;</td>
-      <td>Plex Token</td>
+      <td>Plex token</td>
     </tr>
     <tr>
       <td>JELLYFIN_BASEURL</td>
       <td>http://&lt;JELLYFIN_SERVER_IP&gt;:8096</td>
-      <td>Jellyfin Server URL</td>
+      <td>Jellyfin server URL</td>
     </tr>
     <tr>
       <td>JELLYFIN_USERS</td>
       <td>&lt;JELLYFIN_USER&gt;</td>
-      <td>Jellyfin Benutzername</td>
+      <td>Jellyfin username</td>
     </tr>
     <tr>
       <td>JELLYFIN_PASSWORD</td>
       <td>&lt;JELLYFIN_PASSWORD&gt;</td>
-      <td>Passwort / API-Token</td>
+      <td>Password / API token</td>
     </tr>
     <tr>
       <td>SYNC_FROM_PLEX_TO_JELLYFIN</td>
       <td>True/False</td>
-      <td>Plex Sync zu Jellyfin</td>
+      <td>Sync from Plex to Jellyfin</td>
     </tr>
     <tr>
       <td>SYNC_FROM_JELLYFIN_TO_PLEX</td>
       <td>True/False</td>
-      <td>Jellyfin Sync zu Plex</td>
+      <td>Sync from Jellyfin to Plex</td>
     </tr>
   </tbody>
 </table>
 <ul>
-  <li><strong>Netzwerk</strong>: Bridge (Standard) oder dein NAS Netzwerk, je nach Plex/Jellyfin Zugriff</li>
+  <li><strong>Network</strong>: Bridge (default) or your NAS network, depending on Plex/Jellyfin access</li>
 </ul>
 
-<h3>3. Plex Token erhalten</h3>
+<h3>3. Get Plex Token</h3>
 <ol>
-  <li>Öffne deinen Plex Server und gehe zu einer Medienbibliothek (z. B. Filme)</li>
-  <li>Wähle einen Film aus → **drei Punkte → Medien-Info → XML-Datei anzeigen**</li>
-  <li>In der URL nach folgendem Parameter suchen:<br>
-  <code>X-Plex-Token=&lt;dein_plex_token&gt;</code></li>
-  <li>Diesen Wert kopieren – das ist dein <strong>PLEX_TOKEN</strong></li>
+  <li>Open your Plex Server and go to a media library (e.g. Movies)</li>
+  <li>Select a movie → <strong>three dots → Media Info → View XML</strong></li>
+  <li>Look in the URL for the following parameter:<br>
+  <code>X-Plex-Token=&lt;your_plex_token&gt;</code></li>
+  <li>Copy this value – this is your <strong>PLEX_TOKEN</strong></li>
 </ol>
 
-<h3>4. Jellyfin Token erhalten</h3>
+<h3>4. Get Jellyfin Token</h3>
 <ol>
-  <li>Lege einen Benutzer mit demselben Namen wie in Plex an (z. B. Plex-User heißt „John“, dann auch in Jellyfin „John“)</li>
-  <li>Oben rechts auf das <strong>Personen-Icon → Übersicht → Benutzer → Plus-Logo</strong> klicken</li>
-  <li>Benutzername wie in Plex eingeben, Passwort vergeben und Zugriff auf alle Bibliotheken zulassen</li>
-  <li>Im nächsten Schritt „Server verwalten“ auswählen, nach unten scrollen und speichern</li>
-  <li>Melde dich mit dem neuen Benutzerkonto an</li>
-  <li>Gehe zu <strong>Einstellungen → API-Schlüssel</strong></li>
-  <li><strong>Neuen API-Schlüssel erstellen</strong> und Namen vergeben</li>
-  <li>Der generierte Wert ist dein <strong>JELLYFIN_PASSWORD</strong> / Token für die Docker-Umgebung</li>
+  <li>Create a user with the same name as in Plex (e.g. Plex user “John” → Jellyfin user “John”)</li>
+  <li>Click the <strong>user icon (top right) → Dashboard → Users → plus icon</strong></li>
+  <li>Enter the same username as Plex, set a password, and allow access to all libraries</li>
+  <li>In the next step, select “Manage server”, scroll down, and save</li>
+  <li>Log in with the new user account</li>
+  <li>Go to <strong>Settings → API Keys</strong></li>
+  <li><strong>Create a new API key</strong> and assign a name</li>
+  <li>The generated value is your <strong>JELLYFIN_PASSWORD</strong> / token for the Docker environment</li>
 </ol>
 
-<h3>5. Container starten</h3>
-<p>Nach der Konfiguration → <strong>Übernehmen → Starten</strong><br>
-Logs können im Docker UI unter <strong>Protokolle</strong> angezeigt werden</p>
+<h3>5. Start Container</h3>
+<p>After configuration → <strong>Apply → Start</strong><br>
+Logs can be viewed in the Docker UI under <strong>Logs</strong></p>
 
 <hr>
 <h2>Troubleshooting</h2>
 <ul>
-  <li>Prüfe die Netzwerkeinstellungen, wenn keine Synchronisation stattfindet</li>
-  <li>Stelle sicher, dass Plex Token korrekt ist</li>
-  <li>Jellyfin Benutzer muss Zugriff auf die Libraries haben</li>
+  <li>Check network settings if synchronization does not work</li>
+  <li>Make sure the Plex token is correct</li>
+  <li>The Jellyfin user must have access to the libraries</li>
 </ul>
 
 <hr>
-<h2>Mitwirken</h2>
-<p>Beiträge willkommen! Pull Requests oder Issues auf GitHub sind gern gesehen</p>
+<h2>Contributing</h2>
+<p>Contributions are welcome! Pull requests or issues on GitHub are appreciated</p>
 
 <hr>
-<h2>Lizenz</h2>
-<p>MIT-Lizenz</p>
+<h2>License</h2>
+<p>MIT License</p>
 </body>
 </html>
-
